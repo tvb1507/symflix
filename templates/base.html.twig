@@ -1,12 +1,31 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<html lang="{{ app.request.locale }}">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="author" content="{% block author '' %}">
+    <meta name="description" content="{% block description '' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <title>Symflix - {% block title '' %}</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    {% block stylesheets %}
+    {% endblock %}
+</head>
+<body>
+<header>
+    {% block header %}
+    {% endblock %}
+</header>
+<div id="{% block body_id 'base' %}">
+    {% block body %}{% endblock %}
+</div>
+<footer>
+    {% block footer %}
+    {% endblock %}
+</footer>
+{% block javascripts %}
+{% endblock %}
+</body>
 </html>
