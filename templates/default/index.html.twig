@@ -2,9 +2,9 @@
 
 {% block author 'Gaëtan Rolé' %}
 
-{% block description 'Symflix is a video website with cool movies and series.' %}
+{% block description 'index.head.meta.description'|trans %}
 
-{% block title 'Home' %}
+{% block title 'index.head.meta.title'|trans %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
@@ -25,22 +25,22 @@
                     <div class="carousel-item active">
                         <img src="{{ asset('assets/images/index-carousel-slide-1.jpg') }}" class="d-block w-100" alt="Slide 1">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>First slide label</h5>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                            <h5>{{ 'index.body.carousel.slide.first.h5'|trans }}</h5>
+                            <p>{{ 'index.body.carousel.slide.first.text'|trans }}</p>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="{{ asset('assets/images/index-carousel-slide-2.jpg') }}" class="d-block w-100" alt="Slide 2">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>Second slide label</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <h5>{{ 'index.body.carousel.slide.second.h5'|trans }}</h5>
+                            <p>{{ 'index.body.carousel.slide.second.text'|trans }}</p>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="{{ asset('assets/images/index-carousel-slide-3.jpg') }}" class="d-block w-100" alt="Slide 3">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>Third slide label</h5>
-                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                            <h5>{{ 'index.body.carousel.slide.third.h5'|trans }}</h5>
+                            <p>{{ 'index.body.carousel.slide.third.text'|trans }}</p>
                         </div>
                     </div>
                 </div>

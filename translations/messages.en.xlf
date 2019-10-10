@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="vuxvxNX" resname="about.head.meta.description">
+        <source>about.head.meta.description</source>
+        <target>__about.head.meta.description</target>
+      </trans-unit>
+      <trans-unit id="zRayrgU" resname="about.head.meta.title">
+        <source>about.head.meta.title</source>
+        <target>__about.head.meta.title</target>
+      </trans-unit>
+      <trans-unit id="mRBaREI" resname="about.body.div.h1">
+        <source>about.body.div.h1</source>
+        <target>__about.body.div.h1</target>
+      </trans-unit>
+      <trans-unit id="55stbON" resname="about.body.div.p">
+        <source>about.body.div.p</source>
+        <target>__about.body.div.p</target>
+      </trans-unit>
+      <trans-unit id="yKOF_l0" resname="index.head.meta.description">
+        <source>index.head.meta.description</source>
+        <target>__index.head.meta.description</target>
+      </trans-unit>
+      <trans-unit id="34WnIim" resname="index.head.meta.title">
+        <source>index.head.meta.title</source>
+        <target>__index.head.meta.title</target>
+      </trans-unit>
+      <trans-unit id="o8J7QpP" resname="index.body.carousel.slide.first.h5">
+        <source>index.body.carousel.slide.first.h5</source>
+        <target>__index.body.carousel.slide.first.h5</target>
+      </trans-unit>
+      <trans-unit id="fFEEwnU" resname="index.body.carousel.slide.first.text">
+        <source>index.body.carousel.slide.first.text</source>
+        <target>__index.body.carousel.slide.first.text</target>
+      </trans-unit>
+      <trans-unit id="vFca3lg" resname="index.body.carousel.slide.second.h5">
+        <source>index.body.carousel.slide.second.h5</source>
+        <target>__index.body.carousel.slide.second.h5</target>
+      </trans-unit>
+      <trans-unit id=".CMTXOE" resname="index.body.carousel.slide.second.text">
+        <source>index.body.carousel.slide.second.text</source>
+        <target>__index.body.carousel.slide.second.text</target>
+      </trans-unit>
+      <trans-unit id="FTs3S6Q" resname="index.body.carousel.slide.third.h5">
+        <source>index.body.carousel.slide.third.h5</source>
+        <target>__index.body.carousel.slide.third.h5</target>
+      </trans-unit>
+      <trans-unit id="gIOaTt3" resname="index.body.carousel.slide.third.text">
+        <source>index.body.carousel.slide.third.text</source>
+        <target>__index.body.carousel.slide.third.text</target>
+      </trans-unit>
+      <trans-unit id="ie.GkYr" resname="header.navbar.list.movie">
+        <source>header.navbar.list.movie</source>
+        <target>Movie</target>
+      </trans-unit>
+      <trans-unit id="JuxxMc9" resname="header.navbar.list.register">
+        <source>header.navbar.list.register</source>
+        <target>Registration</target>
+      </trans-unit>
+      <trans-unit id="fTkthZc" resname="header.navbar.list.login">
+        <source>header.navbar.list.login</source>
+        <target>Login</target>
+      </trans-unit>
+      <trans-unit id="aRmBA84" resname="footer.div.link.about">
+        <source>footer.div.link.about</source>
+        <target>__footer.div.link.about</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -25,13 +25,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Movies</a>
+                        <a class="nav-link" href="#">{{ 'header.navbar.list.movie'|trans }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Register</a>
+                        <a class="nav-link" href="#">{{ 'header.navbar.list.register'|trans }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Login</a>
+                        <a class="nav-link" href="#">{{ 'header.navbar.list.login'|trans }}</a>
                     </li>
                 </ul>
             </div>
@@ -44,7 +44,7 @@
 <footer>
     {% block footer %}
         <div class="container">
-            <p>&copy; 2017-2019 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="{{ path('app_about') }}">About</a></p>
+            <p>&copy; 2017-2019 Symflix, Inc. &middot; <a href="{{ path('app_about') }}">{{ 'footer.div.link.about'|trans }}</a></p>
         </div>
     {% endblock %}
 </footer>
