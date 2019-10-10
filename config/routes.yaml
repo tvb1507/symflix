@@ -1,3 +1,12 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+
+# redirecting the homepage
+#index:
+  #path: /
+  #controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+  #defaults:
+    #path: /'%app_locales%'
+    #permanent: true
