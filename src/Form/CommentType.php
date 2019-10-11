@@ -14,10 +14,6 @@ class CommentType extends AbstractType
         $builder
             ->add('content')
             ->add('rate')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('isActive')
-            ->add('media')
         ;
     }
 

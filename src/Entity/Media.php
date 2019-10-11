@@ -72,6 +72,9 @@ class Media
     {
         $this->comments = new ArrayCollection();
         $this->tags = new ArrayCollection();
+        $this->createdAt = new \DateTime('now');
+        $this->updatedAt = null;
+        $this->isActive = true;
     }
 
     public function getId(): ?int
