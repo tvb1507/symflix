@@ -17,6 +17,7 @@
                 <th>CreatedAt</th>
                 <th>UpdatedAt</th>
                 <th>IsActive</th>
+                <th>Tags</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -27,11 +28,12 @@
                 <td>{{ medium.title }}</td>
                 <td>{{ medium.slug }}</td>
                 <td>{{ medium.description }}</td>
-                <td>{{ medium.image }}</td>
+                <td><img src="{{ medium.image }}" alt=""></td>
                 <td>{{ medium.isSerie ? 'Yes' : 'No' }}</td>
                 <td>{{ medium.createdAt ? medium.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ medium.updatedAt ? medium.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ medium.isActive ? 'Yes' : 'No' }}</td>
+                <td>{% for tag in medium.tags %}{{ tag.name }} <br> {% endfor %}</td>
                 <td>
                     <a href="{{ path('media_show', {'id': medium.id}) }}">show</a>
                     <a href="{{ path('media_edit', {'id': medium.id}) }}">edit</a>

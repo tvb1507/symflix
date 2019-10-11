@@ -11,12 +11,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/tag")
+ * @Route("/tag", name="tag_")
  */
 class TagController extends AbstractController
 {
     /**
-     * @Route("/", name="tag_index", methods={"GET"})
+     * @Route("/", name="index", methods={"GET"})
      */
     public function index(TagRepository $tagRepository): Response
     {
@@ -26,7 +26,7 @@ class TagController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="tag_new", methods={"GET","POST"})
+     * @Route("/new", name="new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -49,7 +49,7 @@ class TagController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="tag_show", methods={"GET"})
+     * @Route("/{id}", name="show", methods={"GET"})
      */
     public function show(Tag $tag): Response
     {
@@ -59,7 +59,7 @@ class TagController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="tag_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Tag $tag): Response
     {
@@ -79,7 +79,7 @@ class TagController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="tag_delete", methods={"DELETE"})
+     * @Route("/{id}", name="delete", methods={"DELETE"})
      */
     public function delete(Request $request, Tag $tag): Response
     {

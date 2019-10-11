@@ -25,7 +25,7 @@
             </tr>
             <tr>
                 <th>Image</th>
-                <td>{{ medium.image }}</td>
+                <td><img src="{{ medium.image }}" alt=""></td>
             </tr>
             <tr>
                 <th>IsSerie</th>
@@ -45,6 +45,10 @@
             </tr>
         </tbody>
     </table>
+
+    <div>
+        {{ form(form) }}
+    </div>
 
     <a href="{{ path('media_index') }}">back to list</a>
 

@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
 use App\Entity\Media;
+use App\Form\CommentType;
 use App\Form\MediaType;
 use App\Repository\MediaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -35,6 +37,7 @@ class MediaController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $medium->setSlug('toReplace');
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($medium);
             $entityManager->flush();
@@ -51,9 +54,20 @@ class MediaController extends AbstractController
     /**
      * @Route("/{id}", name="media_show", methods={"GET"})
      */
-    public function show(Media $medium): Response
+    public function show(Media $medium, Request $request): Response
     {
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
+
+        $form->handleRequest($request);
+
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $comment->setMedia($medium);
+//            $comment->author($this->getUser());
+//        }
+
         return $this->render('media/show.html.twig', [
+            'form' => $form->createView(),
             'medium' => $medium,
         ]);
     }

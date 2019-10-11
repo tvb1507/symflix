@@ -46,6 +46,9 @@ class Tag
     public function __construct()
     {
         $this->media = new ArrayCollection();
+        $this->updatedAt = null;
+        $this->isActive = true;
+        $this->createdAt = new \DateTime('now');
     }
 
     public function getId(): ?int
