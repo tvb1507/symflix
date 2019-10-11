@@ -35,8 +35,8 @@
                 <td>{{ medium.isActive ? 'Yes' : 'No' }}</td>
                 <td>{% for tag in medium.tags %}{{ tag.name }} <br> {% endfor %}</td>
                 <td>
-                    <a href="{{ path('media_show', {'id': medium.id}) }}">show</a>
-                    <a href="{{ path('media_edit', {'id': medium.id}) }}">edit</a>
+                    <a href="{{ path('media_show', {'slug': medium.slug}) }}">show</a>
+                    <a href="{{ path('media_edit', {'slug': medium.slug}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
