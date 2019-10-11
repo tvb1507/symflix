@@ -7,48 +7,64 @@
 
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ medium.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ medium.title }}</td>
-            </tr>
-            <tr>
-                <th>Slug</th>
-                <td>{{ medium.slug }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ medium.description }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td><img src="{{ medium.image }}" alt=""></td>
-            </tr>
-            <tr>
-                <th>IsSerie</th>
-                <td>{{ medium.isSerie ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ medium.createdAt ? medium.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>UpdatedAt</th>
-                <td>{{ medium.updatedAt ? medium.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>IsActive</th>
-                <td>{{ medium.isActive ? 'Yes' : 'No' }}</td>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <td>{{ medium.id }}</td>
+        </tr>
+        <tr>
+            <th>Title</th>
+            <td>{{ medium.title }}</td>
+        </tr>
+        <tr>
+            <th>Slug</th>
+            <td>{{ medium.slug }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ medium.description }}</td>
+        </tr>
+        <tr>
+            <th>Image</th>
+            <td><img src="{{ medium.image }}" alt=""></td>
+        </tr>
+        <tr>
+            <th>IsSerie</th>
+            <td>{{ medium.isSerie ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+            <th>CreatedAt</th>
+            <td>{{ medium.createdAt ? medium.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>UpdatedAt</th>
+            <td>{{ medium.updatedAt ? medium.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>IsActive</th>
+            <td>{{ medium.isActive ? 'Yes' : 'No' }}</td>
+        </tr>
         </tbody>
     </table>
 
     <div>
-        {{ form(form) }}
+        <p>
+            {% for comment in medium.comments %}
+                {{ comment.author.email }}<br>
+                {{ comment.content }}<br>
+                {{ comment.rate }}<br>
+            {% endfor %}
+        </p>
     </div>
+
+    {% if is_granted('ROLE_USER') %}
+        <div>
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button class="btn">{{ button_label|default('Save') }}</button>
+            {{ form_end(form) }}
+
+        </div>
+    {% endif %}
 
     <a href="{{ path('media_index') }}">back to list</a>
 

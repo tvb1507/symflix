@@ -61,7 +61,7 @@ class MediaController extends AbstractController
     }
 
     /**
-     * @Route("/{slug}", name="media_show", methods={"GET"})
+     * @Route("/{slug}", name="media_show")
      */
     public function show(Media $medium, Request $request): Response
     {
@@ -70,10 +70,13 @@ class MediaController extends AbstractController
 
         $form->handleRequest($request);
 
-//        if ($form->isSubmitted() && $form->isValid()) {
-//            $comment->setMedia($medium);
-//            $comment->author($this->getUser());
-//        }
+        if ($form->isSubmitted() && $form->isValid()) {
+            $comment->setMedia($medium);
+            $comment->setAuthor($this->getUser());
+            $this->entityManager->persist($comment);
+            $this->entityManager->flush();
+            return $this->redirectToRoute('media_index');
+        }
 
         return $this->render('media/show.html.twig', [
             'form' => $form->createView(),

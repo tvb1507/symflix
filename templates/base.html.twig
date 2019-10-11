@@ -25,14 +25,20 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{ 'header.navbar.list.movie'|trans }}</a>
+                        <a class="nav-link" href="{{ path('media_index') }}">{{ 'header.navbar.list.movie'|trans }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{ 'header.navbar.list.register'|trans }}</a>
+                        <a class="nav-link" href="{{ path('app_register') }}">{{ 'header.navbar.list.register'|trans }}</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">{{ 'header.navbar.list.login'|trans }}</a>
-                    </li>
+                    {% if is_granted('ROLE_USER') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_logout') }}">{{ 'header.navbar.list.logout'|trans }}</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_login') }}">{{ 'header.navbar.list.login'|trans }}</a>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>
