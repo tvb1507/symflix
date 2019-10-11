@@ -7,6 +7,8 @@ use App\Entity\Media;
 use App\Form\CommentType;
 use App\Form\MediaType;
 use App\Repository\MediaRepository;
+use App\Utils\Slugger;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,6 +19,14 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class MediaController extends AbstractController
 {
+    /** @var EntityManagerInterface */
+    private $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
     /**
      * @Route("/", name="media_index", methods={"GET"})
      */
@@ -30,17 +40,16 @@ class MediaController extends AbstractController
     /**
      * @Route("/new", name="media_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, Slugger $slugger): Response
     {
         $medium = new Media();
         $form = $this->createForm(MediaType::class, $medium);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $medium->setSlug('toReplace');
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($medium);
-            $entityManager->flush();
+            $medium->setSlug($slugger->sluggify($medium->getTitle()));
+            $this->entityManager->persist($medium);
+            $this->entityManager->flush();
 
             return $this->redirectToRoute('media_index');
         }
@@ -52,7 +61,7 @@ class MediaController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="media_show", methods={"GET"})
+     * @Route("/{slug}", name="media_show", methods={"GET"})
      */
     public function show(Media $medium, Request $request): Response
     {
@@ -73,15 +82,16 @@ class MediaController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="media_edit", methods={"GET","POST"})
+     * @Route("/{slug}/edit", name="media_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Media $medium): Response
+    public function edit(Request $request, Media $medium, Slugger $slugger): Response
     {
         $form = $this->createForm(MediaType::class, $medium);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $medium->setSlug($slugger->sluggify($medium->getTitle()));
+            $this->entityManager->flush();
 
             return $this->redirectToRoute('media_index');
         }
@@ -93,14 +103,13 @@ class MediaController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="media_delete", methods={"DELETE"})
+     * @Route("/{slug}", name="media_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Media $medium): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$medium->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($medium);
-            $entityManager->flush();
+        if ($this->isCsrfTokenValid('delete'.$medium->getSlug(), $request->request->get('_token'))) {
+            $this->entityManager->remove($medium);
+            $this->entityManager->flush();
         }
 
         return $this->redirectToRoute('media_index');
